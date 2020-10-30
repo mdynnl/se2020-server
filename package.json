@@ -1,0 +1,41 @@
+{
+  "name": "se2020-server",
+  "version": "0.1.0",
+  "private": true,
+  "repository": "https://github.com/mdynnl/se2020-server",
+  "author": "Nyi Nyi Lwin <53917354+mdynnl@users.noreply.github.com>",
+  "main": "./src/index.js",
+  "engines": {
+    "node": ">=8",
+    "yarn": "*"
+  },
+  "scripts": {
+    "start:production": "cross-env NODE_ENV=production pm2 start ./src/index.js",
+    "start": "cross-env NODE_ENV=production node ./src/index.js",
+    "dev": "nodemon ./src/index.js",
+    "gen:warehouses": "node foreign-api/gen-warehouses.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.2",
+    "date-fns": "^2.16.1",
+    "dotenv-safe": "^8.2.0",
+    "express": "^4.17.1",
+    "express-validation": "^3.0.6",
+    "helmet": "^4.1.1",
+    "http-status": "^1.4.2",
+    "joi": "^17.3.0",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.10.11",
+    "morgan": "^1.10.0",
+    "pm2": "^4.5.0",
+    "slugify": "^1.4.5",
+    "uuid": "^8.3.1",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}

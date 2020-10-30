@@ -1,0 +1,49 @@
+###
+### foreign api emulation
+###
+### /foreign
+GET http://localhost:3000/foreign
+
+### /foreign/warehouses
+GET http://localhost:3000/foreign/warehouses
+
+
+###
+### api
+###
+GET http://localhost:3000/v1
+
+###
+GET http://localhost:3000/v1/products
+
+###
+POST http://localhost:3000/v1/products
+content-type: application/json
+
+{
+    "name": "samfjkafjklple",
+    "picture": "https://picsum.photos/200",
+    "stockBalance": 2000,
+    "price": 1000,
+    "warehouseId": 1,
+    "description": "sample item"
+}
+
+###
+GET http://localhost:3000/v1/products/5f9ba86e211ecd5710a38f5f
+
+###
+POST http://localhost:3000/v1/products/5f9ba86e211ecd5710a38f5f
+content-type: application/json
+
+{
+    "name": "hellofafsf",
+    "picture": "https://picsum.photos/200",
+    "stockBalance": 200330,
+    "price": 1000,
+    "warehouseId": 3,
+    "description": "sample description"
+}
+
+###
+DELETE http://localhost:3000/v1/products/5f9ba86e211ecd5710a38f5f
