@@ -21,16 +21,16 @@ POST http://localhost:3000/v1/products
 content-type: application/json
 
 {
-    "name": "samfjkafjklple",
+    "name": "madafaka",
     "picture": "https://picsum.photos/200",
-    "stockBalance": 2000,
-    "price": 1000,
-    "warehouseId": 1,
-    "description": "sample item"
+    "stockBalance": 20000,
+    "price": 10000,
+    "warehouseId": 9,
+    "description": "madafaka item"
 }
 
 ###
-GET http://localhost:3000/v1/products/5f9ba86e211ecd5710a38f5f
+GET http://localhost:3000/v1/products/5f9c11b58562098cc9b2510a
 
 ###
 POST http://localhost:3000/v1/products/5f9ba86e211ecd5710a38f5f
