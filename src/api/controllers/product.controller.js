@@ -4,8 +4,18 @@ const Product = require('../models/product.model')
 
 const list = async (req, res, next) => {
   try {
-    const products = await Product.list(req.query)
+    const {
+      page,
+      count: perPage,
+      name,
+      price,
+      stockBalance,
+      warehouseId
+    } = req.query
+
+    const products = await Product.find()
     const transformedProducts = products.map(p => p.transform())
+    // todo: use mongoose-paginate-v2
     res.json(transformedProducts)
   } catch (err) {
     next(err)

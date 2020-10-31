@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const mongoosePaginate = require('mongoose-paginate-v2')
 const httpStatus = require('http-status')
 
 const APIError = require('../utils/APIError')
@@ -52,6 +53,8 @@ productSchema.pre('save', async function save(next) {
   }
 })
 
+productSchema.plugin(mongoosePaginate)
+
 productSchema.method({
   transform() {
     const transformed = {}
@@ -90,30 +93,6 @@ productSchema.statics = {
     } catch (error) {
       throw error
     }
-  },
-
-  /**
-   * List users in descending order of 'createdAt' timestamp.
-   *
-   * @param {number} skip - Number of users to be skipped.
-   * @param {number} limit - Limit number of users to be returned.
-   * @returns {Promise<Product[]>}
-   */
-  list({ page = 1, perPage = 30, name, price, stockBalance, warehouseId }) {
-    const options = Object.fromEntries(
-      Object.entries({
-        name,
-        price,
-        stockBalance,
-        warehouseId
-      }).filter(([_, v]) => v)
-    )
-
-    return this.find(options)
-      .sort({ createdAt: -1 })
-      .skip(perPage * (page - 1))
-      .limit(perPage)
-      .exec()
   }
 }
 

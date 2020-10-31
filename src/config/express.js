@@ -25,8 +25,8 @@ app.use(methodOverride())
 app.use(helmet())
 app.use(cors())
 
-app.use('/v1', routes)
-app.use('/foreign', foreignRoute)
+app.use('/api/v1', routes)
+app.use('/api/foreign', foreignRoute)
 
 app.use(error.converter)
 app.use(error.notFound)
