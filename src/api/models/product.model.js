@@ -104,10 +104,12 @@ productSchema.statics = {
       }).filter(([_, v]) => v)
     )
 
+    console.log(options)
+
     return this.find(options)
       .sort({ createdAt: -1 })
       .skip(limit * (page - 1))
-      .limit(limit)
+      .limit(+limit)
       .exec()
   }
 }
