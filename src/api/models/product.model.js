@@ -93,6 +93,22 @@ productSchema.statics = {
     } catch (error) {
       throw error
     }
+  },
+  list({ page = 1, limit = 30, name, price, stockBalance, warehouseId }) {
+    const options = Object.fromEntries(
+      Object.entries({
+        name,
+        price,
+        stockBalance,
+        warehouseId
+      }).filter(([_, v]) => v)
+    )
+
+    return this.find(options)
+      .sort({ createdAt: -1 })
+      .skip(limit * (page - 1))
+      .limit(limit)
+      .exec()
   }
 }
 
