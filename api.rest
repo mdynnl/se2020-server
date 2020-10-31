@@ -2,22 +2,22 @@
 ### foreign api emulation
 ###
 ### /foreign
-GET http://localhost:3000/foreign
+GET http://localhost:3001/api/foreign
 
 ### /foreign/warehouses
-GET http://localhost:3000/foreign/warehouses
+GET http://localhost:3001/api/foreign/warehouses
 
 
 ###
 ### api
 ###
-GET http://localhost:3000/v1
+GET http://localhost:3001/api/v1
 
 ###
-GET http://localhost:3000/v1/products
+GET http://localhost:3001/api/v1/products
 
 ###
-POST http://localhost:3000/v1/products
+POST http://localhost:3001/api/v1/products
 content-type: application/json
 
 {
@@ -30,10 +30,10 @@ content-type: application/json
 }
 
 ###
-GET http://localhost:3000/v1/products/5f9c11b58562098cc9b2510a
+GET http://localhost:3001/api/v1/products/5f9c11b58562098cc9b2510a
 
 ###
-POST http://localhost:3000/v1/products/5f9ba86e211ecd5710a38f5f
+POST http://localhost:3001/api/v1/products/5f9ba86e211ecd5710a38f5f
 content-type: application/json
 
 {
@@ -46,4 +46,4 @@ content-type: application/json
 }
 
 ###
-DELETE http://localhost:3000/v1/products/5f9ba86e211ecd5710a38f5f
+DELETE http://localhost:3001/api/v1/products/5f9ba86e211ecd5710a38f5f
