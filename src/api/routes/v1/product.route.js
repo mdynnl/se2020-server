@@ -1,5 +1,5 @@
 const express = require('express')
-const { env } = require('../../../config/vars')
+const { env, feedmepass } = require('../../../config/vars')
 // const { validate, ValidationError, Joi } = require('express-validation')
 // const validation = require('../../validation')
 const controller = require('../../controllers/product.controller')
@@ -27,7 +27,7 @@ router
   .post(controller.create)
 
 const saytheword = ({ query: { pass } }, res, next) => {
-  if (pass === 'alohomora') return next()
+  if (pass === feedmepass) return next()
   res.json({
     message: 'so you want to get in ;-)'
   })
