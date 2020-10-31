@@ -8,7 +8,7 @@ router.get('/warehouses', (req, res) => {
       .fill(0)
       .map((_, i) => ({
         id: i + 1,
-        name: `Warehouses${i + 1}`
+        name: `Warehouse ${i + 1}`
       }))
   )
 })

@@ -10,7 +10,6 @@ const productSchema = new mongoose.Schema(
     name: {
       type: String,
       maxlength: 128,
-      index: true,
       required: true,
       trim: true
     },
@@ -26,17 +25,14 @@ const productSchema = new mongoose.Schema(
     },
     price: {
       type: Number,
-      index: true,
       required: true
     },
     stockBalance: {
       type: Number,
-      index: true,
       required: true
     },
     warehouseId: {
       type: Number,
-      index: true,
       required: true
     }
   },
@@ -69,7 +65,7 @@ productSchema.method({
       'createdAt',
       'updatedAt'
     ]
-    console.log(this.createdAt)
+    
     fields.forEach(field => (transformed[field] = this[field]))
     return transformed
   }
@@ -94,7 +90,7 @@ productSchema.statics = {
       throw error
     }
   },
-  list({ page = 1, limit = 30, name, price, stockBalance, warehouseId }) {
+  list({ page = 1, limit = 30, name = '', price, stockBalance, warehouseId }) {
     const options = Object.fromEntries(
       Object.entries({
         name,
@@ -106,7 +102,11 @@ productSchema.statics = {
 
     console.log(options)
 
-    return this.find(options)
+    return this.find({
+      $text: {
+        $search: name
+      }
+    })
       .sort({ createdAt: -1 })
       .skip(limit * (page - 1))
       .limit(+limit)

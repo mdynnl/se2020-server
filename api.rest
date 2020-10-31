@@ -19,7 +19,7 @@ GET http://localhost:3001/api/v1/products/feedme
 
 
 ###
-GET http://localhost:3001/api/v1/products?page=2&limit=20
+GET http://localhost:3001/api/v1/products?page=1&limit=10&warehouseId=1
 
 ###
 POST http://localhost:3001/api/v1/products
