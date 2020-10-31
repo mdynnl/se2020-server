@@ -1,4 +1,5 @@
 const httpStatus = require('http-status')
+const faker = require('faker')
 
 const Product = require('../models/product.model')
 
@@ -73,4 +74,24 @@ const update = async (req, res, next) => {
   }
 }
 
-module.exports = { list, create, get, remove, update }
+const feed = async (req, res, next) => {
+  await Promise.all(
+    Array(30)
+      .fill(0)
+      .map(() =>
+        new Product({
+          name: faker.commerce.productName(),
+          picture: faker.image.business(500, 500),
+          description: faker.commerce.productDescription(),
+          price: faker.commerce.price(),
+          stockBalance: faker.commerce.price(),
+          warehouseId: faker.random.number({ min: 1, max: 10 })
+        }).save()
+      )
+  )
+  res.json({
+    message: 'gochisosamadeshita'
+  })
+}
+
+module.exports = { list, create, get, remove, update, feed }

@@ -1,4 +1,5 @@
 const express = require('express')
+const { env } = require('../../../config/vars')
 // const { validate, ValidationError, Joi } = require('express-validation')
 // const validation = require('../../validation')
 const controller = require('../../controllers/product.controller')
@@ -24,6 +25,16 @@ router
   .get(controller.list)
   /** */
   .post(controller.create)
+
+const saytheword = ({ query: { pass } }, res, next) => {
+  if (pass === 'alohomora') return next()
+  res.json({
+    message: 'so you want to get in ;-)'
+  })
+}
+
+router.route('/feedme').get(saytheword, controller.feed)
+
 router
   .route('/:productId')
   /** */
@@ -36,4 +47,5 @@ router
   .patch(controller.update)
   /** */
   .post(controller.update)
+
 module.exports = router
