@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const mongoosePaginate = require('mongoose-paginate-v2')
 const httpStatus = require('http-status')
 
 const APIError = require('../utils/APIError')
@@ -49,25 +48,17 @@ productSchema.pre('save', async function save(next) {
   }
 })
 
-productSchema.plugin(mongoosePaginate)
-
 productSchema.method({
   transform() {
-    const transformed = {}
-    const fields = [
+    return [
       'id',
       'name',
       'picture',
       'price',
       'stockBalance',
       'warehouseId',
-      'description',
-      'createdAt',
-      'updatedAt'
-    ]
-    
-    fields.forEach(field => (transformed[field] = this[field]))
-    return transformed
+      'description'
+    ].reduce((o, k) => ((o[k] = this[k]), o), {})
   }
 })
 
@@ -90,22 +81,18 @@ productSchema.statics = {
       throw error
     }
   },
-  list({ page = 1, limit = 30, name = '', price, stockBalance, warehouseId }) {
-    const options = Object.fromEntries(
-      Object.entries({
-        name,
-        price,
-        stockBalance,
-        warehouseId
-      }).filter(([_, v]) => v)
-    )
-
-    console.log(options)
-
+  list(
+    { name = '', price, stockBalance, warehouseId },
+    { page = 1, limit = 30 }
+  ) {
+    
     return this.find({
-      $text: {
-        $search: name
-      }
+      ...(warehouseId && {
+        warehouseId: {
+          $in: [...warehouseId.split(',')]
+        }
+      }),
+      ...(name && { $text: { $search: name } })
     })
       .sort({ createdAt: -1 })
       .skip(limit * (page - 1))
@@ -117,4 +104,5 @@ productSchema.statics = {
 /**
  * @typedef Product
  */
-module.exports = mongoose.model('Product', productSchema)
+const Product = mongoose.model('Product', productSchema)
+module.exports = Product

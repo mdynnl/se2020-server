@@ -29,7 +29,7 @@ router
 const saytheword = ({ query: { pass } }, res, next) => {
   if (pass === feedmepass) return next()
   res.json({
-    message: 'so you want to get in ;-)'
+    message: 'so, you wanted to feed me ;-)'
   })
 }
 

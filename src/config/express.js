@@ -15,6 +15,7 @@ const app = express()
 
 app.set('json escape', true)
 app.set('json spaces', 2)
+app.set('query parser', 'extended')
 app.set('x-powered-by', false)
 
 app.use(morgan(logs))

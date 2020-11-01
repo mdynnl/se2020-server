@@ -15,11 +15,16 @@ GET http://localhost:3001/api/v1
 
 
 ###
-GET http://localhost:3001/api/v1/products/feedme
+GET http://localhost:3001/api/v1/products/feedme?pass=alohomora
 
 
 ###
-GET http://localhost:3001/api/v1/products?page=1&limit=10&warehouseId=1
+GET http://localhost:3001/api/v1/products
+?page=1
+&limit=10
+# &warehouseId=2,3
+# &price[min]=100
+# &price[max]=300
 
 ###
 POST http://localhost:3001/api/v1/products

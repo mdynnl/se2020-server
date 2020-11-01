@@ -16,11 +16,10 @@ if (env === 'development') {
 const connect = () => {
   mongoose
     .connect(mongo.uri, {
-      useCreateIndex: true,
+      autoIndex: false,
       keepAlive: true,
       useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useFindAndModify: true
+      useUnifiedTopology: true
     })
     .then(() => console.log('MongoDB connected...'))
 
