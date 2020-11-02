@@ -20,7 +20,7 @@ GET http://localhost:3001/api/v1/products/feedme?pass=alohomora
 
 ###
 GET http://localhost:3001/api/v1/products
-?page=1
+?page=2
 &limit=10
 # &warehouseId=2,3
 # &price[min]=100
@@ -31,28 +31,28 @@ POST http://localhost:3001/api/v1/products
 content-type: application/json
 
 {
-    "name": "madafaka",
+    "name": "shoes",
     "picture": "https://picsum.photos/200",
     "stockBalance": 20000,
     "price": 10000,
     "warehouseId": 9,
-    "description": "madafaka item"
+    "description": "nike"
 }
 
 ###
-GET http://localhost:3001/api/v1/products/5f9c11b58562098cc9b2510a
+GET http://localhost:3001/api/v1/products/5f9e4684bc99185da9944059
 
 ###
-POST http://localhost:3001/api/v1/products/5f9ba86e211ecd5710a38f5f
+POST http://localhost:3001/api/v1/products/5f9e4684bc99185da9944059
 content-type: application/json
 
 {
-    "name": "hellofafsf",
-    "picture": "https://picsum.photos/200",
-    "stockBalance": 200330,
-    "price": 1000,
-    "warehouseId": 3,
-    "description": "sample description"
+    "name": "",
+    # "picture": "https://picsum.photos/200",
+    # "stockBalance": 200330,
+    # "price": 1000,
+    # "warehouseId": 3,
+    # "description": "sample description"
 }
 
 ###

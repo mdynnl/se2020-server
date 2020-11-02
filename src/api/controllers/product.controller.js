@@ -6,7 +6,7 @@ const Product = require('../models/product.model')
 const list = async (req, res, next) => {
   try {
     const { page, limit, name, price, stockBalance, warehouseId } = req.query
-    return res.json(page)
+    // return res.json(page)
     const query = { name, price, stockBalance, warehouseId }
     const products = await Product.list(query, { page, limit })
     const transformedProducts = products.map(p => p.transform())
