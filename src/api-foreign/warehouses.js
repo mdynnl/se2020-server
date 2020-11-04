@@ -6,10 +6,6 @@ const warehouses = Array(10)
   }))
 
 module.exports = {
-  list() {
-    return warehouses
-  },
-  get(id) {
-    return warehouses.find(w => w.id == id)
-  }
+  list: () => warehouses,
+  get: id => warehouses.find(w => w.id == id)
 }

@@ -7,7 +7,7 @@ const cors = require('cors')
 const helmet = require('helmet')
 
 const routes = require('../api/routes/v1')
-const foreignRoute = require('../api/routes/foreign')
+const foreignRoute = require('../api-foreign')
 const { logs } = require('./vars')
 const error = require('../api/middlewares/error')
 

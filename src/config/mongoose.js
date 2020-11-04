@@ -16,7 +16,7 @@ if (env === 'development') {
 const connect = () => {
   mongoose
     .connect(mongo.uri, {
-      autoIndex: false,
+      useCreateIndex: true,
       keepAlive: true,
       useNewUrlParser: true,
       useUnifiedTopology: true
