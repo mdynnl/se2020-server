@@ -12,7 +12,9 @@
   "scripts": {
     "start": "cross-env NODE_ENV=production node ./src/server.js",
     "dev": "cross-env NODE_ENV=development nodemon ./src/server.js",
-    "test": "cross-env NODE_ENV=test jest",
+    "test:pre": "cross-env NODE_ENV=test node ./src/scripts/check.js",
+    "test:jest": "cross-env NODE_ENV=test jest",
+    "test": "yarn test:pre && yarn test:jest",
     "db:clear": "node src/scripts/clearDb.js",
     "db:feed": "node src/scripts/feedDb.js"
   },
