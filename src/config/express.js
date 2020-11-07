@@ -6,10 +6,10 @@ const methodOverride = require('method-override')
 const cors = require('cors')
 const helmet = require('helmet')
 
-const routes = require('../api/routes/v1')
-const foreignRoute = require('../api-foreign')
-const { logs } = require('./vars')
-const error = require('../api/middlewares/error')
+const productRoutes = require('../routes/v1/product.route')
+const warehouseRoutes = require('../routes/v1/warehouse.route')
+const { logs, API } = require('./vars')
+const error = require('../middlewares/error')
 
 const app = express()
 
@@ -26,8 +26,8 @@ app.use(methodOverride())
 app.use(helmet())
 app.use(cors())
 
-app.use('/api/v1', routes)
-app.use('/api/foreign', foreignRoute)
+app.use(API.PRODUCTS, productRoutes)
+app.use(API.WAREHOUSES, warehouseRoutes)
 
 app.use(error.converter)
 app.use(error.notFound)

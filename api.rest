@@ -1,39 +1,4 @@
-get http://localhost:3001/
-
-
-
-###
-### foreign api emulation
-###
-### /foreign
-GET http://localhost:3001/api/foreign
-
-### /foreign/warehouses
-GET http://localhost:3001/api/foreign/warehouses
-
-### /foreign/warehouses/:id
-GET http://localhost:3001/api/foreign/warehouses/10
-
-###
-### api
-###
-GET http://localhost:3001/api/v1
-
-
-###
-GET http://localhost:3001/api/v1/products/feedme?pass=alohomora
-
-
-###
 GET http://localhost:3001/api/v1/products
-# ?page=2
-# &per_page=10
-
-###
-GET http://localhost:3001/api/v1/products/search?
-# ?page=2
-# &per_page=10
-
 ###
 POST http://localhost:3001/api/v1/products
 Content-Type: application/json
@@ -46,22 +11,35 @@ Content-Type: application/json
     "warehouseId": 9,
     "description": "nike"
 }
+###
+GET http://localhost:3001/api/v1/products/5fa5ea0cb6433e36b0b8aeba
 
 ###
-GET http://localhost:3001/api/v1/products/5fa0f839ebf54c2c2dea67b6
-
-###
-POST http://localhost:3001/api/v1/products/5fa093233e52ecd30fb6ffbc
+PATCH http://localhost:3001/api/v1/products/5fa5ea0cb6433e36b0b8aeba
 Content-Type: application/json
 
 {
   "name": "hey"
-# , "picture": "https://picsum.photos/200"
-# , "stockBalance": 200
-# , "price": 1000
+, "picture": "https://picsum.photos/200"
+, "stockBalance": 200
+, "price": 1000
 , "warehouseId": 3
-# , "description": "sample description"
+, "description": "sample description"
 }
 
 ###
-DELETE http://localhost:3001/api/v1/products/5fa291e891e8d18267f48b14
+DELETE http://localhost:3001/api/v1/products/5fa5ea0cb6433e36b0b8aeba
+
+###
+PATCH  http://localhost:3001/api/v1/products/5fa5ea0cb6433e36b0b8aeba/restore
+
+###
+GET  http://localhost:3001/api/v1/products/trash
+
+
+
+###
+GET  http://localhost:3001/api/foreign/warehouses
+
+###
+GET  http://localhost:3001/api/foreign/warehouses/1
