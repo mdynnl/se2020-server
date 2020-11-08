@@ -1,4 +1,4 @@
-require('dotenv-safe').config()
+require('dotenv').config()
 const { mongoose } = require('../app')
 const { dropDb } = require('../scripts/db')
 const {

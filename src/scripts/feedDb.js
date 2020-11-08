@@ -1,4 +1,4 @@
-require('dotenv-safe').config()
+require('dotenv').config()
 const fetch = require('isomorphic-fetch')
 const { mongoose } = require('../app')
 const { feed } = require('./db')

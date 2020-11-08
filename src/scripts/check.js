@@ -1,4 +1,4 @@
-require('dotenv-safe').config()
+require('dotenv').config()
 const fetch = require('isomorphic-fetch')
 const { mongoose } = require('../app')
 let { WAREHOUSE_API, FILE_API } = process.env

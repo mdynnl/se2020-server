@@ -1,4 +1,4 @@
-require('dotenv-safe').config()
+require('dotenv').config()
 const { WAREHOUSE_API } = process.env
 const fetch = require('isomorphic-fetch')
 
